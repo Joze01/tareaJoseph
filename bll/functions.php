@@ -34,18 +34,34 @@ class Functions
 
   public function modificarProducto($id, $nombre,$cantidad,$precio)
   {
-    $connection = $this->dbConfig.connect();
-    $resultado = false;
-
+    $this->connection = $this->dbConfig->getConnection();
+    $resultado=false;
+    if($this->connection){
+      $this->query = "UPDATE productos SET nombre_producto = '".$nombre."', cantidad_producto = ".$cantidad.", precio_producto=".$precio." WHERE id_producto=".$id;
+      if($this->connection->query($this->query))
+      {
+        $resultado=true;
+      }else {
+        $resultado=false;
+      }
+    }
     return $resultado;
-
   }
 
   public function deleteProducto($id)
   {
-    $connection = $this->dbConfig.connect();
-    $resultado = false;
-
+    $this->connection = $this->dbConfig->getConnection();
+    $resultado=false;
+    if($this->connection){
+      $this->query = "DELETE FROM productos WHERE id_producto=".$id;
+      if($this->connection->query($this->query))
+      {
+        $resultado=true;
+      }else {
+        $resultado=false;
+      }
+    }
+    echo $this->query;
     return $resultado;
   }
 
@@ -79,6 +95,9 @@ class Functions
             echo "</td>";
             echo "<td>$";
             echo $row["precio_producto"];
+            echo "</td>";
+            echo "<td>";
+            echo '<a class="btn btn-danger" href="controller/productos.php?idproducto='.$row["id_producto"].'&method=eliminar" role="button">Eliminar</a>';
             echo "</td>";
             echo "</tr>";
           }
