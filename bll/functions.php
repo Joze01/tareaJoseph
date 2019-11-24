@@ -98,6 +98,17 @@ class Functions
             echo "</td>";
             echo "<td>";
             echo '<a class="btn btn-danger" href="controller/productos.php?idproducto='.$row["id_producto"].'&method=eliminar" role="button">Eliminar</a>';
+            echo '<button type="button"
+                  class="btn btn-warning"
+                  data-toggle="modal"
+                  data-target="#modalUpdate"
+                  data-idproducto="'.$row["id_producto"].'"
+                  data-nombre="'.$row["nombre_producto"].'"
+                  data-precio="'.$row["precio_producto"].'"
+                  data-cantidad="'.$row["cantidad_producto"].'">
+                  Modificar
+            </button>';
+
             echo "</td>";
             echo "</tr>";
           }

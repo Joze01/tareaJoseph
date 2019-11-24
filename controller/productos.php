@@ -28,7 +28,7 @@ switch ($method) {
       $nombre = isset($_POST["nombre"]) ? $_POST["nombre"] : "";
       $precio = isset($_POST["precio"]) ? $_POST["precio"] : "";
       $cantidad = isset($_POST["cantidad"]) ? $_POST["cantidad"] : "";
-      if($funciones->modificarProducto($nombre,$cantidad,$precio)){
+      if($funciones->modificarProducto($idProduto,$nombre,$cantidad,$precio)){
         header("Location: ../index.php?completado=1");
       }else{
         header("Location: ../index.php?completado=2");
